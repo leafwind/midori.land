@@ -45,7 +45,7 @@ export class HomeFeedAPI implements FeedAPI {
     this.discover = new CustomFeedAPI({
       agent,
       feedParams: {
-        feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/feed/aaagrwkrljyvk',
+        feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk',
       },
     })
     this.userInterests = userInterests
@@ -56,7 +56,7 @@ export class HomeFeedAPI implements FeedAPI {
     this.discover = new CustomFeedAPI({
       agent: this.agent,
       feedParams: {
-        feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/feed/aaagrwkrljyvk',
+        feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk',
       },
       userInterests: this.userInterests,
     })
