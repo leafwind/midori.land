@@ -325,14 +325,40 @@ export function useGetPopularFeedsQuery(options?: GetPopularFeedsOptions) {
     }
   }, [query, limit])
 
-  // TODO: 暫時停用 popular feeds
-  return {
-    ...query,
-    data: {
-      pages: [],
-      pageParams: [],
-    },
+  // TODO: 暫時停用 popular feeds，只返回指定的 feed
+  const specificFeedUri =
+    'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk'
+
+  if (query.data) {
+    return {
+      ...query,
+      data: {
+        pages: [
+          {
+            feeds: [
+              {
+                uri: specificFeedUri,
+                cid: '',
+                creator: {
+                  did: 'did:plc:nlkgxuj2udf4otr3gf7hjghl',
+                  handle: 'skyfeed.xyz',
+                  displayName: 'SkyFeed',
+                  avatar: '',
+                },
+                displayName: 'Custom Feed',
+                description: 'A custom test feed',
+                likeCount: 0,
+              },
+            ],
+            cursor: undefined,
+          },
+        ],
+        pageParams: [undefined],
+      },
+    }
   }
+
+  return query
 }
 
 export function useSearchPopularFeedsMutation() {
