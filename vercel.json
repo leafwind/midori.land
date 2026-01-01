@@ -3,6 +3,10 @@
     {
       "source": "/gate/:path*",
       "destination": "https://bsky.app/gate/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
