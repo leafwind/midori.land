@@ -248,6 +248,24 @@ export function useGetPopularFeedsQuery(options?: GetPopularFeedsOptions) {
     enabled: Boolean(moderationOpts) && options?.enabled !== false,
     queryKey: createGetPopularFeedsQueryKey(options),
     queryFn: async ({pageParam}) => {
+      // TODO: 暫時停用 popular feeds，只返回指定的 feed
+      if (pageParam === undefined) {
+        return {
+          feeds: [
+            (
+              await agent.app.bsky.feed.getFeedGenerator({
+                feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk',
+              })
+            ).data.view,
+            (
+              await agent.app.bsky.feed.getFeedGenerator({
+                feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaahhfaqsqlpy',
+              })
+            ).data.view,
+          ],
+        }
+      }
+
       const res = await agent.app.bsky.unspecced.getPopularFeedGenerators({
         limit,
         cursor: pageParam,
@@ -324,51 +342,6 @@ export function useGetPopularFeedsQuery(options?: GetPopularFeedsOptions) {
       lastPageCountRef.current = data?.pages?.length || 0
     }
   }, [query, limit])
-
-  // TODO: 暫時停用 popular feeds，只返回指定的 feed
-  if (query.data) {
-    return {
-      ...query,
-      data: {
-        pages: [
-          {
-            feeds: [
-              {
-                uri: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk',
-                cid: '',
-                creator: {
-                  did: 'did:plc:nlkgxuj2udf4otr3gf7hjghl',
-                  handle: 'leafwind.tw',
-                  displayName: 'SkyFeed',
-                  avatar:
-                    'https://cdn.bsky.app/img/avatar_thumbnail/plain/did:plc:nlkgxuj2udf4otr3gf7hjghl/bafkreihprea3tec4aayipsx3mjeruo2s4pe6id6tih6rpnyrk5rsgkimmi@jpeg',
-                },
-                displayName: '實況與創作',
-                description: 'leafwind 維護的演算法 Feed (alpha)',
-                likeCount: 0,
-              },
-              {
-                uri: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaahhfaqsqlpy',
-                cid: '',
-                creator: {
-                  did: 'did:plc:nlkgxuj2udf4otr3gf7hjghl',
-                  handle: 'leafwind.tw',
-                  displayName: 'SkyFeed',
-                  avatar:
-                    'https://cdn.bsky.app/img/avatar_thumbnail/plain/did:plc:nlkgxuj2udf4otr3gf7hjghl/bafkreihcm75jcl2j7nmewhlxq6u6wkcibz5272npzuxsreph5s4y7s42gu@jpeg',
-                },
-                displayName: '繁體中文',
-                description: 'leafwind 自製的繁體中文 feed',
-                likeCount: 0,
-              },
-            ],
-            cursor: undefined,
-          },
-        ],
-        pageParams: [undefined],
-      },
-    }
-  }
 
   return query
 }
