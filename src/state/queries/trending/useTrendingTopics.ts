@@ -2,6 +2,7 @@ import React from 'react'
 import {type AppBskyUnspeccedDefs, hasMutedWord} from '@atproto/api'
 import {useQuery} from '@tanstack/react-query'
 
+import {getContentLanguages} from '#/state/preferences/languages'
 import {STALE} from '#/state/queries'
 import {usePreferencesQuery} from '#/state/queries/preferences'
 import {useAgent} from '#/state/session'
@@ -29,9 +30,17 @@ export function useTrendingTopics() {
     staleTime: STALE.MINUTES.THREE,
     queryKey: trendingTopicsQueryKey,
     async queryFn() {
-      const {data} = await agent.api.app.bsky.unspecced.getTrendingTopics({
-        limit: DEFAULT_LIMIT,
-      })
+      const contentLangs = getContentLanguages().join(',')
+      const {data} = await agent.api.app.bsky.unspecced.getTrendingTopics(
+        {
+          limit: DEFAULT_LIMIT,
+        },
+        {
+          headers: {
+            'Accept-Language': contentLangs,
+          },
+        },
+      )
       return {
         topics: data.topics ?? [],
         suggested: data.suggested ?? [],
