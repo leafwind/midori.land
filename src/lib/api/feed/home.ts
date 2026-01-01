@@ -1,5 +1,6 @@
 import {type AppBskyFeedDefs, type BskyAgent} from '@atproto/api'
 
+import {CUSTOM_FEEDS} from '#/lib/constants'
 import {CustomFeedAPI} from './custom'
 import {FollowingFeedAPI} from './following'
 import {type FeedAPI, type FeedAPIResponse} from './types'
@@ -35,7 +36,7 @@ export class HomeFeedAPI implements FeedAPI {
   // /home: We ran out of posts from your follows. Here's the latest from
   // 預設的 fallback feed，覆蓋掉原本的 discover feed
   private static readonly LIVE_STREAM_AND_CREATOR_FEED =
-    'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk'
+    CUSTOM_FEEDS.liveStreamAndCreator
 
   constructor({
     userInterests,

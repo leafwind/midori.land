@@ -20,6 +20,7 @@ import {
 } from '@tanstack/react-query'
 
 import {DISCOVER_FEED_URI, DISCOVER_SAVED_FEED} from '#/lib/constants'
+import {CUSTOM_FEEDS} from '#/lib/constants'
 import {sanitizeDisplayName} from '#/lib/strings/display-names'
 import {sanitizeHandle} from '#/lib/strings/handles'
 import {STALE} from '#/state/queries'
@@ -248,18 +249,18 @@ export function useGetPopularFeedsQuery(options?: GetPopularFeedsOptions) {
     enabled: Boolean(moderationOpts) && options?.enabled !== false,
     queryKey: createGetPopularFeedsQueryKey(options),
     queryFn: async ({pageParam}) => {
-      // TODO: 暫時停用 popular feeds，只返回指定的 feed
+      // TODO: /feeds 頁面暫時停用 popular feeds，只返回指定的 feed
       if (pageParam === undefined) {
         return {
           feeds: [
             (
               await agent.app.bsky.feed.getFeedGenerator({
-                feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk',
+                feed: CUSTOM_FEEDS.liveStreamAndCreator,
               })
             ).data.view,
             (
               await agent.app.bsky.feed.getFeedGenerator({
-                feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaahhfaqsqlpy',
+                feed: CUSTOM_FEEDS.traditionalChinese,
               })
             ).data.view,
           ],
