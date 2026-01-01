@@ -32,6 +32,10 @@ export class HomeFeedAPI implements FeedAPI {
   usingDiscover = false
   itemCursor = 0
   userInterests?: string
+  // /home: We ran out of posts from your follows. Here's the latest from
+  // 預設的 fallback feed，覆蓋掉原本的 discover feed
+  private static readonly LIVE_STREAM_AND_CREATOR_FEED =
+    'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk'
 
   constructor({
     userInterests,
@@ -45,9 +49,7 @@ export class HomeFeedAPI implements FeedAPI {
     this.discover = new CustomFeedAPI({
       agent,
       feedParams: {
-        // We ran out of posts from your follows. Here's the latest from
-        // 預設的 fallback feed
-        feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk',
+        feed: HomeFeedAPI.LIVE_STREAM_AND_CREATOR_FEED,
       },
     })
     this.userInterests = userInterests
@@ -58,9 +60,7 @@ export class HomeFeedAPI implements FeedAPI {
     this.discover = new CustomFeedAPI({
       agent: this.agent,
       feedParams: {
-        // We ran out of posts from your follows. Here's the latest from
-        // 預設的 fallback feed
-        feed: 'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk',
+        feed: HomeFeedAPI.LIVE_STREAM_AND_CREATOR_FEED,
       },
       userInterests: this.userInterests,
     })
