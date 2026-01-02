@@ -141,9 +141,9 @@ export const defaults: Schema = {
     lastEmailConfirm: undefined,
   },
   languagePrefs: {
-    primaryLanguage: deviceLanguageCodes[0] || 'en',
+    primaryLanguage: deviceLanguageCodes[0] || 'zh_TW',
     contentLanguages: deviceLanguageCodes || [],
-    postLanguage: deviceLanguageCodes[0] || 'en',
+    postLanguage: deviceLanguageCodes[0] || 'zh_TW',
     postLanguageHistory: (deviceLanguageCodes || [])
       .concat(['en', 'ja', 'pt', 'de'])
       .slice(0, 6),
