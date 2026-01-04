@@ -133,7 +133,7 @@ export const LANGUAGES: Language[] = [
   // {code3: 'day', code2: '', name: 'Land Dayak languages'},
   // {code3: 'del', code2: '', name: 'Delaware'},
   // {code3: 'den', code2: '', name: 'Slave (Athapascan)'},
-  // {code3: 'deu', code2: 'de', name: 'German'},
+  {code3: 'deu', code2: 'de', name: 'German'},
   // {code3: 'dgr', code2: '', name: 'Dogrib'},
   // {code3: 'din', code2: '', name: 'Dinka'},
   // {code3: 'div', code2: 'dv', name: 'Divehi; Dhivehi; Maldivian'},
@@ -402,7 +402,7 @@ export const LANGUAGES: Language[] = [
   // {code3: 'pli', code2: 'pi', name: 'Pali'},
   // {code3: 'pol', code2: 'pl', name: 'Polish'},
   // {code3: 'pon', code2: '', name: 'Pohnpeian'},
-  // {code3: 'por', code2: 'pt', name: 'Portuguese'},
+  {code3: 'por', code2: 'pt', name: 'Portuguese'},
   // {code3: 'pra', code2: '', name: 'Prakrit languages'},
   // {
   //   code3: 'pro',
