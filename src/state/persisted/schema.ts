@@ -148,8 +148,8 @@ export const defaults: Schema = {
     // 預設發文語言
     postLanguage: deviceLanguageCodes[0] || 'zh',
     postLanguageHistory: (deviceLanguageCodes || [])
-      .concat(['en', 'ja'])
-      .slice(0, 3),
+      .concat(['en', 'ja', 'pt', 'de'])
+      .slice(0, 6),
     // try full language tag first, then fallback to language code
     appLanguage: findSupportedAppLanguage([
       deviceLocales.at(0)?.languageTag,

@@ -2338,7 +2338,7 @@ msgstr "已封鎖內容"
 msgid "Content filters"
 msgstr "內容篩選"
 
-#: src/screens/Search/modules/ExploreRecommendations.tsx:90
+#: src/screens/Search/modules/ExploreRecommendations.tsx:59
 msgid "Content from across the network we think you might like."
 msgstr "我們從網路的各個角落精選出了您可能會感興趣的內容。"
 
@@ -3945,7 +3945,7 @@ msgctxt "toast"
 msgid "Feeds updated!"
 msgstr "成功更新動態源！"
 
-#: src/screens/Search/modules/ExploreRecommendations.tsx:96
+#: src/screens/Search/modules/ExploreRecommendations.tsx:65
 msgid "Feeds we think you might like."
 msgstr "我們覺得您可能會喜歡的動態源。"
 
@@ -7400,7 +7400,7 @@ msgstr "最近的搜尋記錄"
 msgid "Recently used"
 msgstr "最近使用"
 
-#: src/screens/Search/modules/ExploreRecommendations.tsx:85
+#: src/screens/Search/modules/ExploreRecommendations.tsx:54
 msgid "Recommended"
 msgstr "推薦"
 
@@ -11610,12 +11610,10 @@ msgstr "您選擇的興趣主題可以協助我們提供更多您想看到的內
 msgid "Your verifications"
 msgstr "您的驗證"
 
-#: src/screens/Search/modules/ExploreRecommendations.tsx:59
 #: src/screens/Search/modules/ExploreTrendingTopics.tsx:52
 msgid "目前還沒有繁體中文趨勢主題，敬請期待。"
 msgstr ""
 
-#: src/screens/Search/modules/ExploreRecommendations.tsx:55
 #: src/screens/Search/modules/ExploreTrendingTopics.tsx:48
 msgid "趨勢"
 msgstr ""
