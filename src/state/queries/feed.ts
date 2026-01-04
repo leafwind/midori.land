@@ -263,6 +263,11 @@ export function useGetPopularFeedsQuery(options?: GetPopularFeedsOptions) {
                 feed: CUSTOM_FEEDS.traditionalChinese,
               })
             ).data.view,
+            (
+              await agent.app.bsky.feed.getFeedGenerator({
+                feed: CUSTOM_FEEDS.forYou,
+              })
+            ).data.view,
           ],
         }
       }

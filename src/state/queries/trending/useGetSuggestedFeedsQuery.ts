@@ -44,13 +44,16 @@ export function useGetSuggestedFeedsQuery({enabled}: {enabled?: boolean}) {
       const feed2 = await agent.app.bsky.feed.getFeedGenerator({
         feed: CUSTOM_FEEDS.traditionalChinese,
       })
+      const feed3 = await agent.app.bsky.feed.getFeedGenerator({
+        feed: CUSTOM_FEEDS.forYou,
+      })
 
       return {
         // feeds: data.feeds.filter(feed => {
         //   const isSaved = !!savedFeeds?.find(s => s.value === feed.uri)
         //   return !isSaved
         // }),
-        feeds: [feed1.data.view, feed2.data.view],
+        feeds: [feed1.data.view, feed2.data.view, feed3.data.view],
       }
     },
   })

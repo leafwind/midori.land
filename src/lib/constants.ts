@@ -45,6 +45,8 @@ export const CUSTOM_FEEDS = {
     'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaagrwkrljyvk',
   traditionalChinese:
     'at://did:plc:nlkgxuj2udf4otr3gf7hjghl/app.bsky.feed.generator/aaahhfaqsqlpy',
+  forYou:
+    'at://did:plc:3guzzweuqraryl3rdkimjamk/app.bsky.feed.generator/for-you',
 }
 
 const BASE_FEEDBACK_FORM_URL = `${HELP_DESK_URL}/requests/new`
