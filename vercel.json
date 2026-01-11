@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/gate/:path*",
-      "destination": "https://bsky.app/gate/:path*"
+      "source": "/static/(.*)",
+      "destination": "/static/$1"
     },
     {
       "source": "/(.*)",
