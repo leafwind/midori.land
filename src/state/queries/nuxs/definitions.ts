@@ -10,7 +10,6 @@ export enum Nux {
   AgeAssuranceDismissibleNotice = 'AgeAssuranceDismissibleNotice',
   AgeAssuranceDismissibleFeedBanner = 'AgeAssuranceDismissibleFeedBanner',
   BookmarksAnnouncement = 'BookmarksAnnouncement',
-  FindContactsAnnouncement = 'FindContactsAnnouncement',
   FindContactsDismissibleBanner = 'FindContactsDismissibleBanner',
   LiveNowBetaDialog = 'LiveNowBetaDialog',
   LiveNowBetaNudge = 'LiveNowBetaNudge',
@@ -55,10 +54,6 @@ export type AppNux = BaseNux<
     }
   | {
       id: Nux.BookmarksAnnouncement
-      data: undefined
-    }
-  | {
-      id: Nux.FindContactsAnnouncement
       data: undefined
     }
   | {

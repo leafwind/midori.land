@@ -9163,11 +9163,6 @@ expo-constants@18.0.8, expo-constants@~18.0.11:
     "@expo/config" "~12.0.8"
     "@expo/env" "~2.0.7"
 
-expo-contacts@^15.0.10:
-  version "15.0.11"
-  resolved "https://registry.yarnpkg.com/expo-contacts/-/expo-contacts-15.0.11.tgz#f3164a1d8298d41b0bac9fcb3500bfa6027aa18b"
-  integrity sha512-buKkoQuWJgVSEvR1Yloa5SvGC/ud7T2YeYDe0R7Aa0oz8pwQpjk3W7OoL3QrXIfYcuKTrIz6ffqC8lc3peaAyg==
-
 expo-device@7.1.4:
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/expo-device/-/expo-device-7.1.4.tgz#84ae7c2520cc45f15a9cb0433ae1226c33f7a8ef"

@@ -111,10 +111,6 @@ const SharedPreferencesTesterScreen = lazyNamed(
   () => import('#/screens/E2E/SharedPreferencesTesterScreen'),
   'SharedPreferencesTesterScreen',
 )
-const FindContactsFlowScreen = lazyNamed(
-  () => import('#/screens/FindContactsFlowScreen'),
-  'FindContactsFlowScreen',
-)
 const HashtagScreen = lazyNamed(
   () => import('#/screens/Hashtag'),
   'HashtagScreen',
@@ -191,10 +187,6 @@ const ExternalMediaPreferencesScreen = lazyNamed(
   () => import('#/screens/Settings/ExternalMediaPreferences'),
   'ExternalMediaPreferencesScreen',
 )
-const FindContactsSettingsScreen = lazyNamed(
-  () => import('#/screens/Settings/FindContactsSettings'),
-  'FindContactsSettingsScreen',
-)
 const FollowingFeedPreferencesScreen = lazyNamed(
   () => import('#/screens/Settings/FollowingFeedPreferences'),
   'FollowingFeedPreferencesScreen',
@@ -217,9 +209,7 @@ const NotificationSettingsScreen = lazyNamed(
 )
 const ActivityNotificationSettingsScreen = lazyNamed(
   () =>
-    import(
-      '#/screens/Settings/NotificationSettings/ActivityNotificationSettings'
-    ),
+    import('#/screens/Settings/NotificationSettings/ActivityNotificationSettings'),
   'ActivityNotificationSettingsScreen',
 )
 const LikeNotificationSettingsScreen = lazyNamed(
@@ -229,30 +219,22 @@ const LikeNotificationSettingsScreen = lazyNamed(
 )
 const LikesOnRepostsNotificationSettingsScreen = lazyNamed(
   () =>
-    import(
-      '#/screens/Settings/NotificationSettings/LikesOnRepostsNotificationSettings'
-    ),
+    import('#/screens/Settings/NotificationSettings/LikesOnRepostsNotificationSettings'),
   'LikesOnRepostsNotificationSettingsScreen',
 )
 const MentionNotificationSettingsScreen = lazyNamed(
   () =>
-    import(
-      '#/screens/Settings/NotificationSettings/MentionNotificationSettings'
-    ),
+    import('#/screens/Settings/NotificationSettings/MentionNotificationSettings'),
   'MentionNotificationSettingsScreen',
 )
 const MiscellaneousNotificationSettingsScreen = lazyNamed(
   () =>
-    import(
-      '#/screens/Settings/NotificationSettings/MiscellaneousNotificationSettings'
-    ),
+    import('#/screens/Settings/NotificationSettings/MiscellaneousNotificationSettings'),
   'MiscellaneousNotificationSettingsScreen',
 )
 const NewFollowerNotificationSettingsScreen = lazyNamed(
   () =>
-    import(
-      '#/screens/Settings/NotificationSettings/NewFollowerNotificationSettings'
-    ),
+    import('#/screens/Settings/NotificationSettings/NewFollowerNotificationSettings'),
   'NewFollowerNotificationSettingsScreen',
 )
 const QuoteNotificationSettingsScreen = lazyNamed(
@@ -267,16 +249,12 @@ const ReplyNotificationSettingsScreen = lazyNamed(
 )
 const RepostNotificationSettingsScreen = lazyNamed(
   () =>
-    import(
-      '#/screens/Settings/NotificationSettings/RepostNotificationSettings'
-    ),
+    import('#/screens/Settings/NotificationSettings/RepostNotificationSettings'),
   'RepostNotificationSettingsScreen',
 )
 const RepostsOnRepostsNotificationSettingsScreen = lazyNamed(
   () =>
-    import(
-      '#/screens/Settings/NotificationSettings/RepostsOnRepostsNotificationSettings'
-    ),
+    import('#/screens/Settings/NotificationSettings/RepostsOnRepostsNotificationSettings'),
   'RepostsOnRepostsNotificationSettingsScreen',
 )
 const PrivacyAndSecuritySettingsScreen = lazyNamed(
@@ -591,14 +569,6 @@ function commonScreens(Stack: typeof Flat, unreadCountLabel?: string) {
         }}
       />
       <Stack.Screen
-        name="FindContactsSettings"
-        getComponent={() => FindContactsSettingsScreen}
-        options={{
-          title: title(msg`Find Contacts`),
-          requireAuth: true,
-        }}
-      />
-      <Stack.Screen
         name="NotificationSettings"
         getComponent={() => NotificationSettingsScreen}
         options={{title: title(msg`Notification settings`), requireAuth: true}}
@@ -789,15 +759,6 @@ function commonScreens(Stack: typeof Flat, unreadCountLabel?: string) {
         options={{
           title: title(msg`Saved Posts`),
           requireAuth: true,
-        }}
-      />
-      <Stack.Screen
-        name="FindContactsFlow"
-        getComponent={() => FindContactsFlowScreen}
-        options={{
-          title: title(msg`Find Contacts`),
-          requireAuth: true,
-          gestureEnabled: false,
         }}
       />
     </>
