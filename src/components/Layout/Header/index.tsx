@@ -35,11 +35,13 @@ export function Outer({
   noBottomBorder,
   headerRef,
   sticky = true,
+  safeAreaPadding = false,
 }: {
   children: React.ReactNode
   noBottomBorder?: boolean
   headerRef?: React.RefObject<View | null>
   sticky?: boolean
+  safeAreaPadding?: boolean
 }) {
   const t = useTheme()
   const gutters = useGutters([0, 'base'])
@@ -60,7 +62,15 @@ export function Outer({
         gutters,
         platform({
           native: [a.pb_xs, {minHeight: 48}],
-          web: [a.py_xs, {minHeight: 52}],
+          web: [
+            a.py_xs,
+            {
+              minHeight: 52,
+              paddingTop: safeAreaPadding
+                ? 'max(12px, env(safe-area-inset-top))'
+                : 0,
+            },
+          ],
         }),
         t.atoms.border_contrast_low,
         gtMobile && [a.mx_auto, {maxWidth: 600}],
