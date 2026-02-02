@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import EventEmitter from 'eventemitter3'
 
 import {networkRetry} from '#/lib/async/retry'
+import {GEOLOCATION_ENABLED} from '#/env'
 import {
   FALLBACK_GEOLOCATION_SERVICE_RESPONSE,
   GEOLOCATION_SERVICE_URL,
@@ -47,6 +48,15 @@ let geolocationServicePromise: Promise<{success: boolean}> | undefined
  * startup.
  */
 export async function resolve() {
+  if (!GEOLOCATION_ENABLED) {
+    logger.debug('[Geolocation Disabled] using fallback')
+    device.set(
+      ['geolocationServiceResponse'],
+      FALLBACK_GEOLOCATION_SERVICE_RESPONSE,
+    )
+    emitGeolocationServiceResponseUpdate(FALLBACK_GEOLOCATION_SERVICE_RESPONSE)
+    return
+  }
   if (geolocationServicePromise) {
     const cached = device.get(['geolocationServiceResponse'])
     if (cached) {

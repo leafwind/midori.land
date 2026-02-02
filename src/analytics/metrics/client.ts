@@ -41,6 +41,13 @@ export class MetricsClient<M extends Record<string, any>> {
     payload: M[E],
     metadata: Record<string, any> = {},
   ) {
+    if (!env.METRICS_ENABLED) {
+      logger.debug(`[Metrics Disabled] event: ${event as string}`, {
+        payload,
+        metadata,
+      })
+      return
+    }
     this.start()
 
     const e = {

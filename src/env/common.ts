@@ -87,6 +87,8 @@ export const CHAT_PROXY_DID: Did =
 /**
  * Metrics API host
  */
+export const METRICS_ENABLED =
+  process.env.EXPO_PUBLIC_METRICS_ENABLED === 'true'
 export const METRICS_API_HOST: string =
   process.env.EXPO_PUBLIC_METRICS_API_HOST || 'https://events.bsky.app'
 
@@ -126,6 +128,8 @@ export const GCP_PROJECT_ID: number =
  * URLs for the app config web worker. Can be a
  * locally running server, see `env.example` for more.
  */
+export const GEOLOCATION_ENABLED =
+  process.env.EXPO_PUBLIC_GEOLOCATION_ENABLED === 'true'
 export const GEOLOCATION_DEV_URL = process.env.GEOLOCATION_DEV_URL
 export const GEOLOCATION_PROD_URL = `https://ip.bsky.app`
 export const GEOLOCATION_URL = IS_DEV
@@ -136,6 +140,8 @@ export const GEOLOCATION_URL = IS_DEV
  * URLs for the live-event config web worker. Can be a
  * locally running server, see `env.example` for more.
  */
+export const LIVE_EVENTS_ENABLED =
+  process.env.EXPO_PUBLIC_LIVE_EVENTS_ENABLED === 'true'
 export const LIVE_EVENTS_DEV_URL = process.env.LIVE_EVENTS_DEV_URL
 export const LIVE_EVENTS_PROD_URL = `https://live-events.workers.bsky.app`
 export const LIVE_EVENTS_URL = IS_DEV
