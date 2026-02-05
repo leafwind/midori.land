@@ -8,19 +8,26 @@ import {
   isBskyCustomFeedUrl,
   makeRecordUri,
 } from '#/lib/strings/url-helpers'
-import {LIVE_EVENTS_URL} from '#/env'
+import {Logger} from '#/logger'
+import {LIVE_EVENTS_ENABLED, LIVE_EVENTS_URL} from '#/env'
 import {useLiveEventPreferences} from '#/features/liveEvents/preferences'
 import {type LiveEventsWorkerResponse} from '#/features/liveEvents/types'
 import {useDevMode} from '#/storage/hooks/dev-mode'
 
 const qc = new QueryClient()
 const liveEventsQueryKey = ['live-events']
+const logger = Logger.create(Logger.Context.Default, {})
 
 export const DEFAULT_LIVE_EVENTS = {
   feeds: [],
 }
 
 async function fetchLiveEvents(): Promise<LiveEventsWorkerResponse | null> {
+  // This function will be called outside besides the Provider, the flag is required.
+  if (!LIVE_EVENTS_ENABLED) {
+    logger.debug('[LiveEvents Disabled] returning null')
+    return null
+  }
   try {
     const res = await fetch(`${LIVE_EVENTS_URL}/config`)
     if (!res.ok) return null
@@ -39,9 +46,10 @@ export function Provider({children}: React.PropsWithChildren<{}>) {
   const {data, refetch} = useQuery(
     {
       // keep this, prefectching handles initial load
-      staleTime: 1000 * 15,
+      staleTime: LIVE_EVENTS_ENABLED ? 1000 * 15 : Infinity,
       queryKey: liveEventsQueryKey,
-      refetchInterval: 1000 * 60 * 5, // refetch every 5 minutes
+      refetchInterval: LIVE_EVENTS_ENABLED ? 1000 * 60 * 5 : false, // refetch every 5 minutes
+      enabled: LIVE_EVENTS_ENABLED,
       async queryFn() {
         return fetchLiveEvents()
       },

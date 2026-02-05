@@ -142,9 +142,12 @@ export const defaults: Schema = {
     lastEmailConfirm: undefined,
   },
   languagePrefs: {
-    primaryLanguage: deviceLanguageCodes[0] || 'en',
-    contentLanguages: deviceLanguageCodes || [],
-    postLanguage: deviceLanguageCodes[0] || 'en',
+    // 預設翻譯語言
+    primaryLanguage: deviceLanguageCodes[0] || 'zh',
+    // 預設內容語言
+    contentLanguages: deviceLanguageCodes || ['zh'],
+    // 預設發文語言
+    postLanguage: deviceLanguageCodes[0] || 'zh',
     postLanguageHistory: (deviceLanguageCodes || [])
       .concat(['en', 'ja', 'pt', 'de'])
       .slice(0, 6),

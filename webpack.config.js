@@ -37,7 +37,12 @@ module.exports = async function (env, argv) {
     config.plugins.push(new ReactRefreshWebpackPlugin())
   } else {
     // Support static CDN for chunks
-    config.output.publicPath = 'auto'
+    // relative path, original
+    // config.output.publicPath = 'auto'
+    // absolute path
+    // Static hosting (e.g. Vercel) 不支援相對路徑
+    // 因此改用絕對路徑讓首頁解析，才能跳過首頁直接存取其他頁面
+    config.output.publicPath = '/'
   }
 
   if (GENERATE_STATS || OPEN_ANALYZER) {

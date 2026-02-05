@@ -19,6 +19,7 @@
     }
   },
   "scripts": {
+    "check-size": "echo \"Total:\" && du -sh web-build && echo \"JS bundles:\" && find web-build -name \"*.js\" -exec ls -lh {} \\; | awk '{print $5, $9}'",
     "prepare": "is-ci || husky install",
     "postinstall": "patch-package && yarn intl:compile-if-needed",
     "prebuild": "EXPO_NO_GIT_STATUS=1 expo prebuild --clean",
@@ -140,7 +141,6 @@
     "expo-build-properties": "~1.0.10",
     "expo-camera": "~17.0.10",
     "expo-clipboard": "~8.0.8",
-    "expo-contacts": "^15.0.10",
     "expo-device": "~8.0.10",
     "expo-file-system": "~19.0.20",
     "expo-font": "~14.0.10",

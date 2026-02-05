@@ -1,12 +1,18 @@
-# Bluesky Social App
+# Midori Land Social App (A soft fork from Bluesky Social App)
 
-Welcome friends! This is the codebase for the Bluesky Social app.
+歡迎！這是社群軟體 Midori Land 的 codebase！
 
 Get the app itself:
 
-- **Web: [bsky.app](https://bsky.app)**
-- **iOS: [App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)**
-- **Android: [Play Store](https://play.google.com/store/apps/details?id=xyz.blueskyweb.app)**
+- **Web: [midori.land](https://midori.land)**
+- ~~**iOS: [App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)**~~ （暫時沒有）
+- ~~**Android: [Play Store](https://play.google.com/store/apps/details?id=xyz.blueskyweb.app)**~~ （暫時沒有）
+
+## 核心理念
+
+- 移除台灣人不需要的功能（非繁中語言、英文內容探索、電話尋找聯絡人等等）
+- 新增台灣人需要的功能（預設 Feed、預設封鎖色情與詐騙清單、未來可能會有繁中內容探索等等）
+- 盡可能維持與上游 [social-app](https://github.com/bluesky-social/social-app) 的一致性（軟分岔），以取得所有新功能、臭蟲修復，與安全性更新，可能的話也貢獻回 Social App
 
 ## Development Resources
 

@@ -6,21 +6,14 @@ import {
   useRef,
   useState,
 } from 'react'
-import {
-  type StyleProp,
-  type TextInput,
-  View,
-  type ViewStyle,
-} from 'react-native'
+import {type TextInput, View} from 'react-native'
 import {msg, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/native'
 import {useQueryClient} from '@tanstack/react-query'
 
-import {HITSLOP_20} from '#/lib/constants'
-import {HITSLOP_10} from '#/lib/constants'
+import {HITSLOP_10, HITSLOP_20} from '#/lib/constants'
 import {useNonReactiveCallback} from '#/lib/hooks/useNonReactiveCallback'
-import {MagnifyingGlassIcon} from '#/lib/icons'
 import {type NavigationProp} from '#/lib/routes/types'
 import {listenSoftReset} from '#/state/events'
 import {useActorAutocompleteQuery} from '#/state/queries/actor-autocomplete'
@@ -39,14 +32,12 @@ import {atoms as a, tokens, useBreakpoints, useTheme, web} from '#/alf'
 import {Button, ButtonText} from '#/components/Button'
 import {SearchInput} from '#/components/forms/SearchInput'
 import * as Layout from '#/components/Layout'
-import {Text} from '#/components/Typography'
 import {IS_WEB} from '#/env'
 import {account, useStorage} from '#/storage'
 import type * as bsky from '#/types/bsky'
 import {AutocompleteResults} from './components/AutocompleteResults'
 import {SearchHistory} from './components/SearchHistory'
 import {SearchLanguageDropdown} from './components/SearchLanguageDropdown'
-import {Explore} from './Explore'
 import {SearchResults} from './SearchResults'
 
 export function SearchScreenShell({
@@ -276,22 +267,6 @@ export function SearchScreenShell({
     }
   }, [setShowAutocomplete])
 
-  const focusSearchInput = useCallback(
-    (tab?: 'user' | 'profile' | 'feed') => {
-      textInput.current?.focus()
-
-      // If a tab is specified, set the tab parameter
-      if (tab) {
-        if (IS_WEB) {
-          navigation.setParams({...route.params, tab})
-        } else {
-          navigation.setParams({tab})
-        }
-      }
-    },
-    [navigation, route],
-  )
-
   const showHeader = !gtMobile || navButton !== 'menu'
 
   return (
@@ -426,7 +401,6 @@ export function SearchScreenShell({
           query={query}
           queryWithParams={queryWithParams}
           headerHeight={headerHeight}
-          focusSearchInput={focusSearchInput}
         />
       </View>
     </Layout.Screen>
@@ -437,17 +411,12 @@ let SearchScreenInner = ({
   query,
   queryWithParams,
   headerHeight,
-  focusSearchInput,
 }: {
   query: string
   queryWithParams: string
   headerHeight: number
-  focusSearchInput: (tab?: 'user' | 'profile' | 'feed') => void
 }): React.ReactNode => {
-  const t = useTheme()
   const setMinimalShellMode = useSetMinimalShellMode()
-  const {hasSession} = useSession()
-  const {gtTablet} = useBreakpoints()
   const route = useRoute()
 
   // Get tab parameter from route params
@@ -496,38 +465,8 @@ let SearchScreenInner = ({
       onPageSelected={onPageSelected}
       initialPage={activeTab}
     />
-  ) : hasSession ? (
-    <Explore focusSearchInput={focusSearchInput} headerHeight={headerHeight} />
   ) : (
-    <Layout.Center>
-      <View style={a.flex_1}>
-        {gtTablet && (
-          <View
-            style={[
-              a.border_b,
-              t.atoms.border_contrast_low,
-              a.px_lg,
-              a.pt_sm,
-              a.pb_lg,
-            ]}>
-            <Text style={[a.text_2xl, a.font_bold]}>
-              <Trans>Search</Trans>
-            </Text>
-          </View>
-        )}
-
-        <View style={[a.align_center, a.justify_center, a.py_4xl, a.gap_lg]}>
-          <MagnifyingGlassIcon
-            strokeWidth={3}
-            size={60}
-            style={t.atoms.text_contrast_medium as StyleProp<ViewStyle>}
-          />
-          <Text style={[t.atoms.text_contrast_medium, a.text_md]}>
-            <Trans>Find posts, users, and feeds on Bluesky</Trans>
-          </Text>
-        </View>
-      </View>
-    </Layout.Center>
+    <View />
   )
 }
 SearchScreenInner = memo(SearchScreenInner)
