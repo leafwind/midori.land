@@ -112,9 +112,9 @@ export function WelcomeModal({control}: WelcomeModalProps) {
                       a.text_2xl,
                       a.font_semi_bold,
                       a.user_select_none,
-                      {color: '#354358', letterSpacing: -0.5},
+                      {color: '#049F52', letterSpacing: -0.5},
                     ]}>
-                    Bluesky
+                    綠地
                   </Text>
                 </View>
               </View>

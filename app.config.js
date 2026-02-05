@@ -38,16 +38,17 @@ module.exports = function (_config) {
   return {
     expo: {
       version: VERSION,
-      name: 'Bluesky',
-      slug: 'bluesky',
-      scheme: 'bluesky',
+      // Home screen app name
+      name: 'Midori',
+      slug: 'midori',
+      scheme: 'midori',
       owner: 'blueskysocial',
       runtimeVersion: {
         policy: 'appVersion',
       },
       icon: './assets/app-icons/ios_icon_default_next.png',
       userInterfaceStyle: 'automatic',
-      primaryColor: '#1083fe',
+      primaryColor: '#09B35E',
       newArchEnabled: false,
       ios: {
         supportsTablet: false,
@@ -213,6 +214,13 @@ module.exports = function (_config) {
       },
       web: {
         favicon: './assets/favicon.png',
+        // 覆寫原本 node_modules/expo-pwa/build/Manifest.js 預設值
+        display: 'standalone',
+        lang: 'zh-Hant',
+        name: 'midori.land',
+        short_name: 'midori',
+        themeColor: '#09B35E',
+        preferRelatedApplications: false,
       },
       updates: {
         url: 'https://updates.bsky.app/manifest',
